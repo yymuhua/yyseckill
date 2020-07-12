@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/yyseckill.iml" filepath="$PROJECT_DIR$/.idea/yyseckill.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yyseckill-common/yyseckill-common.iml" filepath="$PROJECT_DIR$/yyseckill-common/yyseckill-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yyseckill-gateway/yyseckill-gateway.iml" filepath="$PROJECT_DIR$/yyseckill-gateway/yyseckill-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yyseckill-product/yyseckill-product.iml" filepath="$PROJECT_DIR$/yyseckill-product/yyseckill-product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yyseckill-seckill/yyseckill-seckill.iml" filepath="$PROJECT_DIR$/yyseckill-seckill/yyseckill-seckill.iml" />
+    </modules>
+  </component>
+</project>

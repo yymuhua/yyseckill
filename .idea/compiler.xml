@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="yyseckill-common" />
+        <module name="yyseckill-product" />
+        <module name="yyseckill-gateway" />
+        <module name="yyseckill-seckill" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="renren-generator" target="1.8" />
+      <module name="yyseckill" target="1.8" />
+      <module name="yyseckill-common" target="1.8" />
+      <module name="yyseckill-gateway" target="1.8" />
+      <module name="yyseckill-product" target="1.8" />
+      <module name="yyseckill-seckill" target="1.8" />
+      <module name="yyseckill-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="renren-generator" options="-parameters" />
+      <module name="yyseckill-common" options="" />
+      <module name="yyseckill-gateway" options="-parameters" />
+      <module name="yyseckill-product" options="-parameters" />
+      <module name="yyseckill-seckill" options="-parameters" />
+      <module name="yyseckill-web" options="-parameters" />
+    </option>
+  </component>
+</project>

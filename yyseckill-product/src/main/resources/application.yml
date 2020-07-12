@@ -1,0 +1,14 @@
+server:
+  port: 9700
+spring:
+  application:
+    name: yyseckill-product
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/db_seckill?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
