@@ -2,6 +2,7 @@ package com.yyh.yyseckill.seckill.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
+import com.yyh.common.to.SeckillOrderTo;
 import com.yyh.yyseckill.seckill.constant.RedisConstant;
 import com.yyh.yyseckill.seckill.dto.KillDto;
 import com.yyh.yyseckill.seckill.service.SeckillService;
@@ -11,7 +12,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RLock;
 import org.redisson.api.RSemaphore;
 import org.redisson.api.RedissonClient;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -33,12 +36,21 @@ public class SeckillServiceImpl implements SeckillService {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    private Environment env;
+
     @Override
     public String kill(KillDto killDto) {
         // 1、获取当前秒杀商品的详细信息
         BoundHashOperations<String, String, String> hashOps =
                 redisTemplate.boundHashOps(RedisConstant.PRODUCT_CACHE_PREFIX);
-        String json = hashOps.get(killDto.getKillId());
+        String json = null;
+        if (hashOps.hasKey(killDto.getKillId())) {
+            json = hashOps.get(killDto.getKillId());
+        }
         if (StringUtils.isEmpty(json)) {
             return null;
         }
@@ -65,15 +77,21 @@ public class SeckillServiceImpl implements SeckillService {
                         // 2.5 获取信号量
                         RSemaphore semaphore =
                                 redissonClient.getSemaphore(RedisConstant.PRODUCT_STOCK_SEMAPHORE + randomCode);
-                        try {
-                            semaphore.tryAcquire(killDto.getNum(), 100, TimeUnit.MILLISECONDS);
-                            // TODO 秒杀成功
-                            String timeId = IdWorker.getTimeId();
-                            return timeId;
-                        } catch (InterruptedException e) {
-                            return null;
+                        boolean b = semaphore.tryAcquire(killDto.getNum());
+                        if (b) {
+                            // 秒杀成功。发送MQ
+                            String orderNo = IdWorker.getTimeId();
+                            SeckillOrderTo seckillOrderTo = new SeckillOrderTo();
+                            seckillOrderTo.setCode(orderNo);
+                            seckillOrderTo.setNum(killDto.getNum());
+                            seckillOrderTo.setUserId(killDto.getUserId());
+                            seckillOrderTo.setSessionId(productRedisTo.getSessionId());
+                            seckillOrderTo.setProductId(productRedisTo.getId());
+                            rabbitTemplate.convertAndSend(env.getProperty("mq.order.exchange"),
+                                    env.getProperty("mq.order.routing.key"),
+                                    seckillOrderTo);
+                            return orderNo;
                         }
-
                     }
                 }
             }

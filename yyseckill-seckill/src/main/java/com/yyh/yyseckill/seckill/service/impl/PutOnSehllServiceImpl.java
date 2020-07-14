@@ -110,6 +110,7 @@ public class PutOnSehllServiceImpl implements PutOnShellService {
             // 设置实际秒杀库存、起止时间、单次购买数量上限等
             Integer stock = session.getTotal();
             productRedisTo.setStock(Long.valueOf(stock));
+            productRedisTo.setSessionId(session.getId());
             productRedisTo.setStartTime(session.getStartTime());
             productRedisTo.setEndTime(session.getEndTime());
             productRedisTo.setLimitOnce(5);

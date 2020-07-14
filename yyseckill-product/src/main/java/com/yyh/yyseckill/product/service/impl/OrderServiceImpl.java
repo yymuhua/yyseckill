@@ -1,6 +1,9 @@
 package com.yyh.yyseckill.product.service.impl;
 
+import com.yyh.common.to.SeckillOrderTo;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +27,21 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public void createSeckillOrder(SeckillOrderTo seckillOrderTo) {
+        OrderEntity entity = new OrderEntity();
+        entity.setCode(seckillOrderTo.getCode());
+        entity.setNum(seckillOrderTo.getNum());
+        entity.setProductId(seckillOrderTo.getProductId());
+        entity.setSeckillId(seckillOrderTo.getSessionId());
+        entity.setUserId(seckillOrderTo.getUserId().toString());
+        entity.setCreateTime(new Date());
+        entity.setStatus(0);
+        super.save(entity);
+        // 订单保存完之后立即减库存
+
     }
 
 }

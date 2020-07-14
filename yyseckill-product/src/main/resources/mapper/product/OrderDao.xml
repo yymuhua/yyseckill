@@ -7,6 +7,7 @@
     <resultMap type="com.yyh.yyseckill.product.entity.OrderEntity" id="orderMap">
         <result property="code" column="code"/>
         <result property="productId" column="product_id"/>
+        <result property="num" column="num"/>
         <result property="seckillId" column="seckill_id"/>
         <result property="userId" column="user_id"/>
         <result property="status" column="status"/>

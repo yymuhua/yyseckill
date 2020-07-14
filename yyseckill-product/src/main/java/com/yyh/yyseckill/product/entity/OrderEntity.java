@@ -12,7 +12,7 @@ import lombok.Data;
  * 
  * @author yyh
  * @email 469268632qq.com
- * @date 2020-07-11 23:44:21
+ * @date 2020-07-14 00:01:13
  */
 @Data
 @TableName("order")
@@ -29,7 +29,11 @@ public class OrderEntity implements Serializable {
 	 */
 	private Integer productId;
 	/**
-	 * 秒杀id
+	 * 商品数量
+	 */
+	private Integer num;
+	/**
+	 * 秒杀场次id
 	 */
 	private Integer seckillId;
 	/**

@@ -50,7 +50,8 @@ DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
   `code` varchar(50) NOT NULL COMMENT '订单编号',
   `product_id` int(11) NOT NULL DEFAULT 0 COMMENT '商品id',
-  `seckill_id` int(11) NOT NULL DEFAULT 0 COMMENT '秒杀id',
+  `num` int(11) NOT NULL DEFAULT 0 COMMENT '商品数量',
+  `seckill_id` int(11) NOT NULL DEFAULT 0 COMMENT '秒杀场次id',
   `user_id` varchar(20) NOT NULL DEFAULT 0 COMMENT '用户id',
   `status` int(11) NOT NULL DEFAULT '-1' COMMENT '秒杀结果: -1无效  0成功(未付款)  1已付款  2已取消',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -60,7 +61,6 @@ CREATE TABLE `order` (
 -- ----------------------------
 -- Records of order
 -- ----------------------------
-INSERT INTO `order` VALUES ('343507312969003008', '8', '3', '10', '0', '2019-07-02 18:56:31');
 
 -- ----------------------------
 -- Table structure for random_code

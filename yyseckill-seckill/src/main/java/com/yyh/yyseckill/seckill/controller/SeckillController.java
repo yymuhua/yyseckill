@@ -29,7 +29,7 @@ public class SeckillController {
      * @return
      */
     @PostMapping(value = "/execute")
-    public R execute(KillDto killDto) {
+    public R execute(@RequestBody KillDto killDto) {
         String orderNo = seckillService.kill(killDto);
         if (StringUtils.isEmpty(orderNo)) {
             return R.ok("秒杀失败");

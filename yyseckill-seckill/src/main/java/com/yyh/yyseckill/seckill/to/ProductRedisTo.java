@@ -46,6 +46,10 @@ public class ProductRedisTo {
     private Date updateTime;
 
     /**
+     * 秒杀活动场次id
+     */
+    private Integer sessionId;
+    /**
      * 秒杀开始时间
      */
     private Date startTime;
