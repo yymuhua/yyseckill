@@ -11,21 +11,27 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 /**
  * @author yeyuhua
  * @version 1.0
  * @created 2020/7/14 12:29 上午
  */
 @Slf4j
-@RabbitListener(queues = "order.seckill.order.queue")
 @Component
 public class SeckillOrderListener {
     @Autowired
     private OrderService orderService;
 
-    @RabbitHandler
-    public void listener(SeckillOrderTo seckillOrderTo, Channel channel, Message message) {
-        log.info("开始创建秒杀单");
-        orderService.createSeckillOrder(seckillOrderTo);
+    @RabbitListener(queues = "${mq.order.queue}")
+    public void createOrderListener(SeckillOrderTo seckillOrderTo) {
+        try {
+            log.info("秒杀异步邮件通知-接收消息:{}", seckillOrderTo);
+            // 创建订单
+            orderService.createSeckillOrder(seckillOrderTo);
+        } catch (Exception e) {
+            log.error("秒杀异步邮件通知-接收消息-发生异常：",e.fillInStackTrace());
+        }
     }
 }

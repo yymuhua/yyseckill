@@ -1,6 +1,9 @@
 package com.yyh.yyseckill.product.service.impl;
 
 import com.yyh.common.to.SeckillOrderTo;
+import com.yyh.yyseckill.product.entity.ProductEntity;
+import com.yyh.yyseckill.product.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,6 +21,11 @@ import com.yyh.yyseckill.product.service.OrderService;
 
 @Service("orderService")
 public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> implements OrderService {
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private OrderDao orderDao;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -39,9 +47,18 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
         entity.setUserId(seckillOrderTo.getUserId().toString());
         entity.setCreateTime(new Date());
         entity.setStatus(0);
-        super.save(entity);
-        // 订单保存完之后立即减库存
-
+        System.out.println(entity);
+        insert(entity);
+//        super.save(entity);
+        // 订单保存完之后减库存
+//        synchronized (OrderServiceImpl.class) {
+//            ProductEntity byId = productService.getById(seckillOrderTo.getProductId());
+//            byId.setStock(byId.getStock() - seckillOrderTo.getNum());
+//            productService.updateById(byId);
+//        }
     }
 
+    public void insert(OrderEntity orderEntity) {
+        orderDao.myInsert(orderEntity);
+    }
 }
