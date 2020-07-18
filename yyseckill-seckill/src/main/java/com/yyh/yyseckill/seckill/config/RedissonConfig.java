@@ -12,6 +12,7 @@ import org.springframework.core.env.Environment;
 
 /**
  * redisson通用化配置
+ *
  * @Author:debug (SteadyJack)
  * @Date: 2019/7/2 10:57
  **/
@@ -22,7 +23,7 @@ public class RedissonConfig {
     private Environment env;
 
     @Bean
-    public RedissonClient redissonClient(){
+    public RedissonClient redissonClient() {
         Config config = new Config();
         config.useSingleServer()
                 .setAddress(env.getProperty("redis.config.host"));

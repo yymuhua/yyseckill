@@ -61,6 +61,7 @@ public class SeckillSessionServiceImpl extends ServiceImpl<SeckillSessionDao, Se
 
     /**
      * 获取上架时间上界
+     *
      * @return
      */
     public String startTime() {
@@ -69,8 +70,10 @@ public class SeckillSessionServiceImpl extends ServiceImpl<SeckillSessionDao, Se
         LocalDateTime start = LocalDateTime.of(now, min);
         return start.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
+
     /**
      * 获取上架时间下界
+     *
      * @return
      */
     public String endTime() {

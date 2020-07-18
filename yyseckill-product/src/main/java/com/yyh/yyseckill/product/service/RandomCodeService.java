@@ -7,8 +7,6 @@ import com.yyh.yyseckill.product.entity.RandomCodeEntity;
 import java.util.Map;
 
 /**
- * 
- *
  * @author yyh
  * @email 469268632qq.com
  * @date 2020-07-11 23:44:21

@@ -16,6 +16,7 @@ import java.util.List;
 public interface SeckillSessionFeignService {
     /**
      * 远程调用商品服务的获取最近三天秒杀活动信息接口
+     *
      * @return
      */
     @GetMapping("/seckillsession/latest3DaysSessions")

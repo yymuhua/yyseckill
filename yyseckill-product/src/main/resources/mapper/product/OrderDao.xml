@@ -3,7 +3,7 @@
 
 <mapper namespace="com.yyh.yyseckill.product.dao.OrderDao">
 
-	<!-- 可根据自己的需求，是否要使用 -->
+    <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.yyh.yyseckill.product.entity.OrderEntity" id="orderMap">
         <result property="code" column="code"/>
         <result property="productId" column="product_id"/>
@@ -14,7 +14,8 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
     <insert id="myInsert">
-        INSERT INTO `order` (code, seckill_id, product_id, num, user_id, status, create_time)  VALUES  (#{code}, #{seckillId}, #{productId}, #{num}, #{userId}, #{status}, #{createTime})
+        INSERT INTO `order` (code, seckill_id, product_id, num, user_id, status, create_time) VALUES (#{code},
+        #{seckillId}, #{productId}, #{num}, #{userId}, #{status}, #{createTime})
     </insert>
 
 

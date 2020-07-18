@@ -13,6 +13,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * redis的通用配置
+ *
  * @Author:debug (SteadyJack)
  * @Date: 2019/7/2 10:17
  **/

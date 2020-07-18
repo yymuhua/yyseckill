@@ -4,6 +4,7 @@ import lombok.Data;
 
 /**
  * 秒杀订单TO
+ *
  * @author yeyuhua
  * @version 1.0
  * @created 2020/7/13 11:37 下午

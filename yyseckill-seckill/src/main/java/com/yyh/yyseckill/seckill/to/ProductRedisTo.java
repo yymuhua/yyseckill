@@ -6,6 +6,7 @@ import java.util.Date;
 
 /**
  * 秒杀商品信息
+ *
  * @author yeyuhua
  * @version 1.0
  * @created 2020/7/12 5:15 下午

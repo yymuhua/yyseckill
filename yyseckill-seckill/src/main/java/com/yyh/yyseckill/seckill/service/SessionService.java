@@ -12,6 +12,7 @@ import java.util.List;
 public interface SessionService {
     /**
      * 获取当前生效的所有秒杀商品
+     *
      * @return
      */
     List<ProductRedisTo> getCurrentProductRedisTo();

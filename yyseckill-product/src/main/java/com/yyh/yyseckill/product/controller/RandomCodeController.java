@@ -16,10 +16,7 @@ import com.yyh.common.utils.PageUtils;
 import com.yyh.common.utils.R;
 
 
-
 /**
- * 
- *
  * @author yyh
  * @email 469268632qq.com
  * @date 2020-07-11 23:44:21
@@ -34,7 +31,7 @@ public class RandomCodeController {
      * 列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = randomCodeService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -45,8 +42,8 @@ public class RandomCodeController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    public R info(@PathVariable("id") Integer id){
-		RandomCodeEntity randomCode = randomCodeService.getById(id);
+    public R info(@PathVariable("id") Integer id) {
+        RandomCodeEntity randomCode = randomCodeService.getById(id);
 
         return R.ok().put("randomCode", randomCode);
     }
@@ -55,8 +52,8 @@ public class RandomCodeController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody RandomCodeEntity randomCode){
-		randomCodeService.save(randomCode);
+    public R save(@RequestBody RandomCodeEntity randomCode) {
+        randomCodeService.save(randomCode);
 
         return R.ok();
     }
@@ -65,8 +62,8 @@ public class RandomCodeController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody RandomCodeEntity randomCode){
-		randomCodeService.updateById(randomCode);
+    public R update(@RequestBody RandomCodeEntity randomCode) {
+        randomCodeService.updateById(randomCode);
 
         return R.ok();
     }
@@ -75,8 +72,8 @@ public class RandomCodeController {
      * 删除
      */
     @RequestMapping("/delete")
-    public R delete(@RequestBody Integer[] ids){
-		randomCodeService.removeByIds(Arrays.asList(ids));
+    public R delete(@RequestBody Integer[] ids) {
+        randomCodeService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

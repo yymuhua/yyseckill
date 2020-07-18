@@ -3,7 +3,7 @@
 
 <mapper namespace="com.yyh.yyseckill.product.dao.ProductDao">
 
-	<!-- 可根据自己的需求，是否要使用 -->
+    <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.yyh.yyseckill.product.entity.ProductEntity" id="productMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 上架Controller
+ *
  * @author yeyuhua
  * @version 1.0
  * @created 2020/7/12 1:59 下午
@@ -22,6 +23,7 @@ public class PutOnShellController {
 
     /**
      * 手动执行上架
+     *
      * @return
      */
     @GetMapping("/execute")

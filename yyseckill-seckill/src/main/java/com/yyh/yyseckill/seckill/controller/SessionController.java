@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * 秒杀活动Controller
+ *
  * @author yeyuhua
  * @version 1.0
  * @created 2020/7/12 11:30 下午
@@ -28,6 +29,7 @@ public class SessionController {
 
     /**
      * 获取当前时间所有的秒杀商品
+     *
      * @return
      */
     @GetMapping(value = "/list")

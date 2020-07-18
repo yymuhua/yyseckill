@@ -3,7 +3,7 @@
 
 <mapper namespace="com.yyh.yyseckill.product.dao.RandomCodeDao">
 
-	<!-- 可根据自己的需求，是否要使用 -->
+    <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.yyh.yyseckill.product.entity.RandomCodeEntity" id="randomCodeMap">
         <result property="id" column="id"/>
         <result property="code" column="code"/>

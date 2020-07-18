@@ -5,11 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import lombok.Data;
 
 /**
- * 
- * 
  * @author yyh
  * @email 469268632qq.com
  * @date 2020-07-11 23:44:21
@@ -17,16 +16,16 @@ import lombok.Data;
 @Data
 @TableName("random_code")
 public class RandomCodeEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
-	@TableId
-	private Integer id;
-	/**
-	 * 
-	 */
-	private String code;
+    /**
+     *
+     */
+    @TableId
+    private Integer id;
+    /**
+     *
+     */
+    private String code;
 
 }

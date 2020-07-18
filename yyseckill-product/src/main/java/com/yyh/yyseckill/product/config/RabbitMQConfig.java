@@ -25,8 +25,10 @@ public class RabbitMQConfig {
     public MessageConverter messageConverter() {
         return new Jackson2JsonMessageConverter();
     }
+
     /**
      * 秒杀订单队列
+     *
      * @return
      */
     @Bean
@@ -36,6 +38,7 @@ public class RabbitMQConfig {
 
     /**
      * 秒杀订单绑定
+     *
      * @return
      */
     @Bean
@@ -48,10 +51,11 @@ public class RabbitMQConfig {
 
     /**
      * 秒杀交换机
+     *
      * @return
      */
     @Bean
     public TopicExchange seckillOrderExchange() {
-        return new TopicExchange(env.getProperty("mq.order.exchange"),true,false);
+        return new TopicExchange(env.getProperty("mq.order.exchange"), true, false);
     }
 }

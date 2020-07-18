@@ -16,7 +16,6 @@ import com.yyh.common.utils.PageUtils;
 import com.yyh.common.utils.R;
 
 
-
 /**
  * 商品表
  *
@@ -34,7 +33,7 @@ public class ProductController {
      * 列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = productService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -45,8 +44,8 @@ public class ProductController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    public R info(@PathVariable("id") Integer id){
-		ProductEntity product = productService.getById(id);
+    public R info(@PathVariable("id") Integer id) {
+        ProductEntity product = productService.getById(id);
 
         return R.ok().put("product", product);
     }
@@ -55,8 +54,8 @@ public class ProductController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody ProductEntity product){
-		productService.save(product);
+    public R save(@RequestBody ProductEntity product) {
+        productService.save(product);
 
         return R.ok();
     }
@@ -65,8 +64,8 @@ public class ProductController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody ProductEntity product){
-		productService.updateById(product);
+    public R update(@RequestBody ProductEntity product) {
+        productService.updateById(product);
 
         return R.ok();
     }
@@ -75,8 +74,8 @@ public class ProductController {
      * 删除
      */
     @RequestMapping("/delete")
-    public R delete(@RequestBody Integer[] ids){
-		productService.removeByIds(Arrays.asList(ids));
+    public R delete(@RequestBody Integer[] ids) {
+        productService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

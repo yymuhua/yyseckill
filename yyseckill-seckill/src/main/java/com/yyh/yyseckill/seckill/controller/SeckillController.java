@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 秒杀Controller
+ *
  * @author yeyuhua
  * @version 1.0
  * @created 2020/7/12 12:13 上午
@@ -26,6 +27,7 @@ public class SeckillController {
 
     /**
      * 商品秒杀核心业务逻辑-用于压力测试
+     *
      * @return
      */
     @PostMapping(value = "/execute")

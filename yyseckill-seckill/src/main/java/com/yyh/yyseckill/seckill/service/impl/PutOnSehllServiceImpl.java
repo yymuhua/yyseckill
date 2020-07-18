@@ -49,7 +49,8 @@ public class PutOnSehllServiceImpl implements PutOnShellService {
             // 1、调用远程商品服务，获取最近三天所有秒杀活动
             R r = seckillSessionFeignService.getLatest3DaysSessions();
             if (r.getCode() == 0) {
-                List<SeckillSessionVo> sessions = r.getData(new TypeReference<List<SeckillSessionVo>>(){});
+                List<SeckillSessionVo> sessions = r.getData(new TypeReference<List<SeckillSessionVo>>() {
+                });
                 // 2、上架（缓存到Redis中）
                 // 2.1 保存秒杀活动信息
                 saveSessionInfos(sessions);
@@ -66,11 +67,12 @@ public class PutOnSehllServiceImpl implements PutOnShellService {
      * 保存秒杀活动信息
      * key：SESSIONS_CACHE_PREFIX + startTime + "_" + endTime
      * value：场次id + 关联的商品id
+     *
      * @param sessions
      */
     private void saveSessionInfos(List<SeckillSessionVo> sessions) {
         if (CollectionUtils.isEmpty(sessions)) {
-            return ;
+            return;
         }
         sessions.stream().forEach(session -> {
             Long startTime = session.getStartTime().getTime();
@@ -89,11 +91,12 @@ public class PutOnSehllServiceImpl implements PutOnShellService {
      * key：商品id
      * value：商品对象JSON数据
      * 同时需要设置信号量
+     *
      * @param sessions
      */
     private void saveProductInfo(List<SeckillSessionVo> sessions) {
         if (CollectionUtils.isEmpty(sessions)) {
-            return ;
+            return;
         }
         sessions.stream().forEach(session -> {
             BoundHashOperations<String, Object, Object> ops =
@@ -101,7 +104,7 @@ public class PutOnSehllServiceImpl implements PutOnShellService {
             String key = session.getId() + "_" + session.getProductId();
             // 幂等性保证，如果已经加了该商品就无须再加
             if (ops.hasKey(key)) {
-                return ;
+                return;
             }
             // 1、设置商品信息
             ProductRedisTo productRedisTo = new ProductRedisTo();

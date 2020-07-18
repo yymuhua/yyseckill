@@ -31,7 +31,7 @@ public class SeckillOrderListener {
             // 创建订单
             orderService.createSeckillOrder(seckillOrderTo);
         } catch (Exception e) {
-            log.error("秒杀异步邮件通知-接收消息-发生异常：",e.fillInStackTrace());
+            log.error("秒杀异步邮件通知-接收消息-发生异常：", e.fillInStackTrace());
         }
     }
 }
